@@ -1,4 +1,4 @@
-module firstPlayer(clk, action1, action2, state2, health);
+module firstPlayer(clk, action1, state, action2, state2, health);
     input[2:0] action1, action2, state2;
     input clk;
     output[1:0] health;
@@ -14,7 +14,8 @@ module firstPlayer(clk, action1, action2, state2, health);
               left2 = 3'b101,
               right1 = 3'b110,
               right2 = 3'b111;
-    reg [2:0] state = player1S0;
+    output [2:0] state;          
+    reg [2:0] state;
     always @ (posedge clk)
         case(state)
             //100
