@@ -1,5 +1,7 @@
 {
     "recommendations": [
-        "kitkat.kitkat-verilog"
+        "kitkat.kitkat-verilog",
+        "ms-vscode.cpptools",
+        "jeff-hykin.better-cpp-syntax"
     ]
 }
