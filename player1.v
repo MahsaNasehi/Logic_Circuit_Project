@@ -22,6 +22,9 @@ module firstPlayer(clk, action1, action2, state2, health);
                 //plyer1 goes to 010
                 if (action1 == right1 || action1 == right2)
                     assign state = player1S1;
+                    //health--
+                    if(action2 == kick && state2 == player2S2)
+                        health = health - 2'b01;
                 //waiting count
                 if (action1 == await) begin
                     wait_count = wait_count + 2'b01;
@@ -68,6 +71,21 @@ module firstPlayer(clk, action1, action2, state2, health);
                     (action1 == punch && action2 == punch && state2 == player2S2)||
                     (action1 == kick && action2 == kick && state2 != player2S0))
                         assign state = player1S1;
+                        //health--
+                        if((action1 == left1 || action1 == left2) && action2 == kick && state2 == player2S2)
+                            health = health - 2'b01;
+                //health--
+                else if(((action1 == await || action1 == right1 || action1 == right2 || action1 == punch)&&
+                        action2 == kick && state2 == player2S1) ||
+                        ((action1 == await || action1 == right1 || action1 == right2)&&
+                    action2 == kick && state2 == player2S2))
+                        health = health - 2'b01;
+                //health -= 2
+                else if(((action1 == await || action1 == right1 || action1 == right2 || action1 == kick)&&
+                    action2 == punch && state2 == player2S2))
+                        health = health - 2'b10;
+                        
+               
                 //waiting count
                 if (action1 == await) begin
                     wait_count = wait_count + 2'b01;
