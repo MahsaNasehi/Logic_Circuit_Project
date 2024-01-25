@@ -6,6 +6,6 @@ module finiteStateMachine (
     input action1,
     input action2
 );
-player1
+player1,
 
 endmodule
