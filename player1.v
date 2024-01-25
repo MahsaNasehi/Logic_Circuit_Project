@@ -70,7 +70,7 @@ module firstPlayer(clk, action1, action2, state2, health);
                         assign state = player1S1;
                 //waiting count
                 if (action1 == await) begin
-                    assign wait_count = wait_count + 2'b01;
+                    wait_count = wait_count + 2'b01;
                     if (wait_count == 2'b10 && health != 2'b11) begin
                         health = health + 2'b01;
                         wait_count = 2'b00;
