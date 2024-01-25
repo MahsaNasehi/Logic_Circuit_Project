@@ -1,4 +1,5 @@
 module firstPlayer(input action1, input action2, input state2, output health);
+;
 
     parameter player1S0 = 3'b100, player1S1 = 3'b010, player1S2 = 3'b001,
               player2S0 = 3'b001, player2S1 = 3'b010, player2S2 = 3'b100;  
@@ -51,10 +52,9 @@ module firstPlayer(input action1, input action2, input state2, output health);
                     (action1 == kick && action2 == kick && state2 != player2S0)){
                         state = player1S1;
                     }
-
-                else //S2 be khodesh    
-
+                else; //S2 be khodesh    
         endcase    
 
+knbgtg
 
 endmodule
