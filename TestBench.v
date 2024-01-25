@@ -1,4 +1,4 @@
-module tb;
+module TestBench;
     reg clk;
     reg[2:0] action1;
     reg[2:0] action2;
@@ -16,11 +16,14 @@ module tb;
     //clk
     initial
         begin
+            $dumpfile("TestBench.vcd"); // Specify the VCD file name
+            $dumpvars(0, TestBench); // Dump all variables at time 
             clk = 0;
             resetGame = 0;
             #5 resetGame = 1; 
             repeat (60)
             #5 clk = ~clk;
+            $finish;
         end
     
     //start action    
