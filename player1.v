@@ -29,6 +29,8 @@ module firstPlayer(clk, action1, action2, state2, health);
                         health = health - 2'b01;
                     else if (action2 == punch && state2 == player2S2) 
                         health = health - 2'b10;
+                    
+                        
                 end
                 // if ((action1 == kick || action1 == punch || 
                 //    action1 == wait || action1 == jump) && 
