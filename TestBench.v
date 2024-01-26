@@ -32,9 +32,8 @@ module TestBench;
             actionEnable = 0; 
             #5
             actionEnable = 1; 
-            repeat(25)
+            repeat(21)
             #10 actionEnable = ~actionEnable;
-            resetGame = 0;
         end   
     initial
         begin
