@@ -1,4 +1,4 @@
-module secondPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action2, state, health);
+module secondPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action2, state2, health);
     input[2:0] action1, action2, state1;
     input clk, reset, actionEnable, isGameOver;
     output[1:0] health;
@@ -14,22 +14,22 @@ module secondPlayer(clk, isGameOver, reset, actionEnable, action1, state1, actio
               left2 = 3'b101,
               right1 = 3'b110,
               right2 = 3'b111;
-    output [2:0] state;          
-    reg [2:0] state = player2S0;
+    output [2:0] state2;          
+    reg [2:0] state2 = player2S0;
     reg flagEnable = 2'b1;
     always @ (posedge clk or negedge reset)
         if (reset == 0) begin
-            state = player2S0;
+            state2 = player2S0;
             health = 2'b11;
             wait_count = 2'b00;
         end
         else if (flagEnable && actionEnable && ~isGameOver) begin
-            case(state)
+            case(state2)
                 //001
                 player2S0: begin
                     //plyer2 goes to 010
                     if (action2 == left1 || action2 == left2)
-                        assign state = player2S1;
+                        assign state2 = player2S1;
                         //health--
                         if(action1 == kick && state1 == player1S2)
                             health = health - 2'b01;
@@ -41,13 +41,13 @@ module secondPlayer(clk, isGameOver, reset, actionEnable, action1, state1, actio
                             assign wait_count = 2'b00;
                         end
                     end
-                    //else nothing to do, state doesn't change
+                    //else nothing to do, state2 doesn't change
                 end
                 //010
                 player2S1: begin
                     //player2 goes to 100
                     if (action2 == left1 || action2 == left2) begin
-                        assign state = player2S2;
+                        assign state2 = player2S2;
                         //health -= 1
                         if ((action1 == kick) && (state1 == player1S1)) 
                             health = health - 2'b01;
@@ -58,8 +58,8 @@ module secondPlayer(clk, isGameOver, reset, actionEnable, action1, state1, actio
                     //player2 goes to 001
                     else if ((action2 == right1 || action2 == right2) || 
                             (action1 == kick && action2 == kick && state1 == player1S2))
-                        assign state = player2S0;
-                    //state doesn't change, health -= 1
+                        assign state2 = player2S0;
+                    //state2 doesn't change, health -= 1
                     else if((action2 == punch || action2 == await) && (action1 == kick) && (state1 == player1S2))
                         health = health - 2'b01;
                     //waiting count
@@ -70,7 +70,7 @@ module secondPlayer(clk, isGameOver, reset, actionEnable, action1, state1, actio
                             assign wait_count = 2'b00;
                         end
                     end
-                    //else nothing to do, state doesn't change
+                    //else nothing to do, state2 doesn't change
                 end
                 //100
                 player2S2: begin
@@ -78,17 +78,17 @@ module secondPlayer(clk, isGameOver, reset, actionEnable, action1, state1, actio
                     if ((action2 == right1 || action2 == right2) ||
                         (action1 == punch && action2 == punch && state1 == player1S2)||
                         (action1 == kick && action2 == kick && state1 != player1S0))
-                            assign state = player2S1;
+                            assign state2 = player2S1;
                             //health--
                             if((action2 == right1 || action2 == right2) && action1 == kick && state1 == player1S2)
                                 health = health - 2'b01;
-                    //health--, state doesn't change
+                    //health--, state2 doesn't change
                     else if(((action2 == await || action2 == left1 || action2 == left2 || action2 == punch)&&
                             action1 == kick && state1 == player1S1) ||
                             ((action2 == await || action2 == left1 || action2 == left2)&&
                         action1 == kick && state1 == player1S2))
                             health = health - 2'b01;
-                    //health -= 2, state doesn't change
+                    //health -= 2, state2 doesn't change
                     else if(((action2 == await || action2 == left1 || action2 == left2 || action2 == kick)&&
                         action1 == punch && state1 == player1S2))
                             health = health - 2'b10;
