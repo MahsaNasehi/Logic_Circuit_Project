@@ -19,9 +19,9 @@ module firstPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action
     reg flagEnable = 2'b1;
     always @ (posedge clk or negedge reset)
         if (reset == 0) begin
-            state1 = player1S0;
-            health = 2'b11;
-            wait_count = 2'b00;
+            state1 <= player1S0;
+            health <= 2'b11;
+            wait_count <= 2'b00;
         end
         else if (actionEnable && flagEnable && ~isGameOver) begin
             case(state1)
@@ -29,7 +29,7 @@ module firstPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action
                 player1S0: begin
                     //plyer1 goes to 010
                     if (action1 == right1 || action1 == right2)
-                        assign state1 = player1S1;
+                        state1 = player1S1;
                         //health--
                         if(action2 == kick && state2 == player2S2)
                             health = health - 2'b01;
@@ -38,7 +38,7 @@ module firstPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action
                         wait_count = wait_count + 2'b01;
                         if (wait_count == 2'b10 && health != 2'b11) begin
                             health = health + 2'b01;
-                            assign wait_count = 2'b00;
+                            wait_count = 2'b00;
                         end
                     end
                     //else nothing to do, state1 doesn't change
@@ -47,7 +47,7 @@ module firstPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action
                 player1S1: begin
                     //player1 goes to 001
                     if (action1 == right1 || action1 == right2) begin
-                        assign state1 = player1S2;
+                        state1 = player1S2;
                         //health -= 1
                         if ((action2 == kick) && (state2 == player2S1)) 
                             health = health - 2'b01;
@@ -58,7 +58,7 @@ module firstPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action
                     //player1 goes to 100
                     else if ((action1 == left1 || action1 == left2) || 
                             (action1 == kick && action2 == kick && state2 == player2S2))
-                        assign state1 = player1S0;
+                        state1 = player1S0;
                     //state1 doesn't change, health -= 1
                     else if((action1 == punch || action1 == await) && (action2 == kick) && (state2 == player2S2))
                         health = health - 2'b01;
@@ -67,7 +67,7 @@ module firstPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action
                         wait_count = wait_count + 2'b01;
                         if (wait_count == 2'b10 && health != 2'b11) begin
                             health = health + 2'b01;
-                            assign wait_count = 2'b00;
+                            wait_count = 2'b00;
                         end
                     end
                     //else nothing to do, state1 doesn't change
@@ -78,7 +78,7 @@ module firstPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action
                     if ((action1 == left1 || action1 == left2) ||
                         (action1 == punch && action2 == punch && state2 == player2S2)||
                         (action1 == kick && action2 == kick && state2 != player2S0))
-                            assign state1 = player1S1;
+                            state1 = player1S1;
                             //health--
                             if((action1 == left1 || action1 == left2) && action2 == kick && state2 == player2S2)
                                 health = health - 2'b01;
@@ -104,9 +104,9 @@ module firstPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action
                     end
                 end
             endcase  
-            flagEnable = 1'b0;
+            flagEnable <= 1'b0;
         end 
         else if (~actionEnable) 
-            flagEnable = 1'b1;
+            flagEnable <= 1'b1;
 
 endmodule

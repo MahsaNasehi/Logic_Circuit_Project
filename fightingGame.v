@@ -20,23 +20,23 @@ module fightingGame(health1, health2, firstWin, secondWin, state1,
 
     always @ (negedge resetGame or negedge health1 or negedge health2 or posedge actionEnable)
         if (resetGame == 0) begin
-            firstWin = 1'b0;
-            secondWin = 1'b0;
-            isGameOver = 1'b0;
-            currentState1 = 3'b100;
-            currentState2 = 3'b001;
+            firstWin <= 1'b0;
+            secondWin <= 1'b0;
+            isGameOver <= 1'b0;
+            currentState1 <= 3'b100;
+            currentState2 <= 3'b001;
         end
         else if(health1 == 0) begin
-            secondWin = 1'b1;
-            isGameOver = 1'b1;
+            secondWin <= 1'b1;
+            isGameOver <= 1'b1;
         end
         else if(health2 == 0) begin
-            firstWin = 1'b1;
-            isGameOver = 1'b1;
+            firstWin <= 1'b1;
+            isGameOver <= 1'b1;
         end
         else if (actionEnable) begin
-            currentState1 = state1;
-            currentState2 = state2;
+            currentState1 <= state1;
+            currentState2 <= state2;
         end
     
 
