@@ -30,7 +30,9 @@ module TestBench;
     initial
         begin
             actionEnable = 0; 
-            repeat(23)
+            #5
+            actionEnable = 1; 
+            repeat(21)
             #10 actionEnable = ~actionEnable;
         end   
     initial

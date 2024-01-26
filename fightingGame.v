@@ -12,33 +12,30 @@ module fightingGame(health1, health2, firstWin, secondWin, state1,
     input actionEnable;
     input resetGame;
     
-    reg[2:0] state1 = 3'b100, state2 = 3'b001;
+    reg isGameOver = 1'b0;
     reg firstWin = 1'b0, secondWin = 1'b0;
-    reg[1:0] health1;
-    reg[1:0] health2;
+    reg[2:0] currentState1 = 3'b100, currentState2 = 3'b001;
+    firstPlayer p1(clk, isGameOver, resetGame, actionEnable, action1, state1, action2, currentState2, health1);
+    secondPlayer p2(clk, isGameOver, resetGame, actionEnable, action1, currentState1, action2, state2, health2);
 
-
-    always @ (posedge enable or negedge resetGame)
-        if(resetGame == 0)begin
-            state1 = 3'b100;
-            state2 = 3'b001;
-
+    always @ (negedge resetGame or negedge health1 or negedge health2 or posedge actionEnable)
+        if(health1 == 0) begin
+            secondWin = 1'b1;
+            isGameOver = 1'b1;
+        end
+        else if(health2 == 0) begin
+            firstWin = 1'b1;
+            isGameOver = 1'b1;
+        end
+        else if (resetGame == 0) begin
             firstWin = 1'b0;
             secondWin = 1'b0;
-
-            health1 = 2'b11;
-            health2 = 2'b11;
-        end    
-        if(secondWin == 0 && firstWin == 0) begin
-            firstPlayer p1(clk, action1, state1, action2, state2, health1);
-            secondPlayer p2(clk, action1, state1, action2, state2, health2);
+            isGameOver = 1'b0;
         end
-
+        else if (actionEnable) begin
+            currentState1 = state1;
+            currentState2 = state2;
+        end
     
-    always @ (negedge health1 or negedge health2)    
-        if(health1 == 0)
-            secondWin = 1'b1;
-        else if(health2 == 0)
-            firstWin = 1'b1;    
 
 endmodule
