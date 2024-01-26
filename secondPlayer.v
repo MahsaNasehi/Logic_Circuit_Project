@@ -17,7 +17,7 @@ module secondPlayer(clk, isGameOver, reset, actionEnable, action1, state1, actio
     output [2:0] state2;          
     reg [2:0] state2 = player2S0;
     reg flagEnable = 2'b1;
-    always @ (posedge clk or negedge reset)
+    always @ (posedge clk or negedge reset or negedge actionEnable)
         if (reset == 0) begin
             state2 <= player2S0;
             health <= 2'b11;
@@ -40,7 +40,10 @@ module secondPlayer(clk, isGameOver, reset, actionEnable, action1, state1, actio
                             health = health + 2'b01;
                             wait_count = 2'b00;
                         end
+                        else if(wait_count == 2'b10)
+                            wait_count = 2'b00;
                     end
+                    else wait_count = 2'b00;
                     //else nothing to do, state2 doesn't change
                 end
                 //010
@@ -69,7 +72,10 @@ module secondPlayer(clk, isGameOver, reset, actionEnable, action1, state1, actio
                             health = health + 2'b01;
                             wait_count = 2'b00;
                         end
+                        else if(wait_count == 2'b10)
+                            wait_count = 2'b00;
                     end
+                    else wait_count = 2'b00;
                     //else nothing to do, state2 doesn't change
                 end
                 //100
@@ -101,7 +107,10 @@ module secondPlayer(clk, isGameOver, reset, actionEnable, action1, state1, actio
                             health = health + 2'b01;
                             wait_count = 2'b00;
                         end
+                        else if(wait_count == 2'b10)
+                            wait_count = 2'b00;
                     end
+                    else wait_count = 2'b00;
                 end
             endcase
             flagEnable <= 1'b0;

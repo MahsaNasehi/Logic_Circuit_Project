@@ -17,7 +17,7 @@ module firstPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action
     output [2:0] state1;          
     reg [2:0] state1 = player1S0;
     reg flagEnable = 2'b1;
-    always @ (posedge clk or negedge reset)
+    always @ (posedge clk or negedge reset or negedge actionEnable)
         if (reset == 0) begin
             state1 <= player1S0;
             health <= 2'b11;
@@ -40,7 +40,10 @@ module firstPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action
                             health = health + 2'b01;
                             wait_count = 2'b00;
                         end
+                        else if(wait_count == 2'b10)
+                            wait_count = 2'b00;
                     end
+                    else wait_count = 2'b00;
                     //else nothing to do, state1 doesn't change
                 end
                 //010
@@ -69,7 +72,10 @@ module firstPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action
                             health = health + 2'b01;
                             wait_count = 2'b00;
                         end
+                        else if(wait_count == 2'b10)
+                            wait_count = 2'b00;
                     end
+                    else wait_count = 2'b00;
                     //else nothing to do, state1 doesn't change
                 end
                 //001
@@ -101,7 +107,10 @@ module firstPlayer(clk, isGameOver, reset, actionEnable, action1, state1, action
                             health = health + 2'b01;
                             wait_count = 2'b00;
                         end
+                        else if(wait_count == 2'b10)
+                            wait_count = 2'b00;
                     end
+                    else wait_count = 2'b00;
                 end
             endcase  
             flagEnable <= 1'b0;
