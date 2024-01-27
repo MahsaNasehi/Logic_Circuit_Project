@@ -11,7 +11,7 @@ module fightingGame(health1, health2, firstWin, secondWin, state1,
     input[2:0] action2;
     input actionEnable;
     input resetGame;
-    
+
     reg isGameOver = 1'b0;
     reg firstWin = 1'b0, secondWin = 1'b0;
     reg[2:0] currentState1 = 3'b100, currentState2 = 3'b001;
