@@ -1,0 +1,6 @@
+MO freqDividerForGame NULL freqDividerForGame.v vlg66/freq_divider_for_game.bin 1706518608
+MO freqDividerForSevenSegment NULL freqDividerForSevenSegment.v vlg44/freq_divider_for_seven_segment.bin 1706518608
+MO SevenSeg NULL SevenSeg.v vlg58/_seven_seg.bin 1706518608
+MO firstPlayer NULL firstPlayer.v vlg75/first_player.bin 1706518608
+MO fightingGameForFPGA NULL fightingGameForFPGA.v vlg63/fighting_game_for_f_p_g_a.bin 1706518608
+MO secondPlayer NULL secondPlayer.v vlg51/second_player.bin 1706518608

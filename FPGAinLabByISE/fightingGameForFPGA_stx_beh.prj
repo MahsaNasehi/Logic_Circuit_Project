@@ -1,0 +1,4 @@
+verilog isim_temp "secondPlayer.v"
+verilog isim_temp "firstPlayer.v"
+verilog isim_temp "fightingGameForFPGA.v"
+verilog isim_temp "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"

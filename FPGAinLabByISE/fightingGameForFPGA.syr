@@ -1,0 +1,650 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Reading design: fightingGameForFPGA.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "fightingGameForFPGA.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "fightingGameForFPGA"
+Output Format                      : NGC
+Target Device                      : xc3s400-5-pq208
+
+---- Source Options
+Top Module Name                    : fightingGameForFPGA
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 8
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "SevenSeg.v" in library work
+Compiling verilog file "secondPlayer.v" in library work
+Module <SevenSeg> compiled
+Compiling verilog file "freqDividerForSevenSegment.v" in library work
+Module <secondPlayer> compiled
+Compiling verilog file "freqDividerForGame.v" in library work
+Module <freqDividerForSevenSegment> compiled
+Compiling verilog file "firstPlayer.v" in library work
+Module <freqDividerForGame> compiled
+Compiling verilog file "fightingGameForFPGA.v" in library work
+Module <firstPlayer> compiled
+Module <fightingGameForFPGA> compiled
+No errors in compilation
+Analysis of file <"fightingGameForFPGA.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <fightingGameForFPGA> in library <work>.
+
+Analyzing hierarchy for module <freqDividerForSevenSegment> in library <work>.
+
+Analyzing hierarchy for module <freqDividerForGame> in library <work>.
+
+Analyzing hierarchy for module <SevenSeg> in library <work>.
+
+Analyzing hierarchy for module <firstPlayer> in library <work> with parameters.
+	await = "010"
+	jump = "011"
+	kick = "000"
+	left1 = "100"
+	left2 = "101"
+	player1S0 = "100"
+	player1S1 = "010"
+	player1S2 = "001"
+	player2S0 = "001"
+	player2S1 = "010"
+	player2S2 = "100"
+	punch = "001"
+	right1 = "110"
+	right2 = "111"
+
+Analyzing hierarchy for module <secondPlayer> in library <work> with parameters.
+	await = "010"
+	jump = "011"
+	kick = "000"
+	left1 = "100"
+	left2 = "101"
+	player1S0 = "100"
+	player1S1 = "010"
+	player1S2 = "001"
+	player2S0 = "001"
+	player2S1 = "010"
+	player2S2 = "100"
+	punch = "001"
+	right1 = "110"
+	right2 = "111"
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <fightingGameForFPGA>.
+Module <fightingGameForFPGA> is correct for synthesis.
+ 
+Analyzing module <freqDividerForSevenSegment> in library <work>.
+Module <freqDividerForSevenSegment> is correct for synthesis.
+ 
+Analyzing module <freqDividerForGame> in library <work>.
+Module <freqDividerForGame> is correct for synthesis.
+ 
+Analyzing module <SevenSeg> in library <work>.
+Module <SevenSeg> is correct for synthesis.
+ 
+Analyzing module <firstPlayer> in library <work>.
+	await = 3'b010
+	jump = 3'b011
+	kick = 3'b000
+	left1 = 3'b100
+	left2 = 3'b101
+	player1S0 = 3'b100
+	player1S1 = 3'b010
+	player1S2 = 3'b001
+	player2S0 = 3'b001
+	player2S1 = 3'b010
+	player2S2 = 3'b100
+	punch = 3'b001
+	right1 = 3'b110
+	right2 = 3'b111
+Module <firstPlayer> is correct for synthesis.
+ 
+Analyzing module <secondPlayer> in library <work>.
+	await = 3'b010
+	jump = 3'b011
+	kick = 3'b000
+	left1 = 3'b100
+	left2 = 3'b101
+	player1S0 = 3'b100
+	player1S1 = 3'b010
+	player1S2 = 3'b001
+	player2S0 = 3'b001
+	player2S1 = 3'b010
+	player2S2 = 3'b100
+	punch = 3'b001
+	right1 = 3'b110
+	right2 = 3'b111
+Module <secondPlayer> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <freqDividerForSevenSegment>.
+    Related source file is "freqDividerForSevenSegment.v".
+    Found 1-bit register for signal <clkOut>.
+    Found 26-bit up counter for signal <counter>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <freqDividerForSevenSegment> synthesized.
+
+
+Synthesizing Unit <freqDividerForGame>.
+    Related source file is "freqDividerForGame.v".
+    Found 1-bit register for signal <clkOut>.
+    Found 26-bit up counter for signal <counter>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <freqDividerForGame> synthesized.
+
+
+Synthesizing Unit <SevenSeg>.
+    Related source file is "SevenSeg.v".
+    Found 8-bit register for signal <SEG_DATA>.
+    Found 5-bit register for signal <SEG_SEL>.
+    Found 1-bit register for signal <control>.
+    Summary:
+	inferred  14 D-type flip-flop(s).
+Unit <SevenSeg> synthesized.
+
+
+Synthesizing Unit <firstPlayer>.
+    Related source file is "firstPlayer.v".
+    Found 2-bit register for signal <health>.
+    Found 3-bit register for signal <state1>.
+    Found 2-bit adder for signal <health$share0000> created at line 26.
+    Found 2-bit subtractor for signal <old_health_2$sub0000> created at line 34.
+    Found 2-bit subtractor for signal <old_health_3$sub0000> created at line 58.
+    Found 2-bit adder for signal <old_wait_count_1$add0000> created at line 37.
+    Found 2-bit register for signal <wait_count>.
+    Summary:
+	inferred   7 D-type flip-flop(s).
+	inferred   4 Adder/Subtractor(s).
+Unit <firstPlayer> synthesized.
+
+
+Synthesizing Unit <secondPlayer>.
+    Related source file is "secondPlayer.v".
+    Found 2-bit register for signal <health>.
+    Found 3-bit register for signal <state2>.
+    Found 2-bit adder for signal <health$share0000> created at line 26.
+    Found 2-bit subtractor for signal <old_health_6$sub0000> created at line 34.
+    Found 2-bit subtractor for signal <old_health_7$sub0000> created at line 58.
+    Found 2-bit adder for signal <old_wait_count_5$add0000> created at line 37.
+    Found 2-bit register for signal <wait_count>.
+    Summary:
+	inferred   7 D-type flip-flop(s).
+	inferred   4 Adder/Subtractor(s).
+Unit <secondPlayer> synthesized.
+
+
+Synthesizing Unit <fightingGameForFPGA>.
+    Related source file is "fightingGameForFPGA.v".
+    Found 1-bit register for signal <firstWin>.
+    Found 1-bit register for signal <secondWin>.
+    Found 3-bit register for signal <currentState1>.
+    Found 3-bit register for signal <currentState2>.
+    Found 1-bit register for signal <isGameOver>.
+    Summary:
+	inferred   9 D-type flip-flop(s).
+Unit <fightingGameForFPGA> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 8
+ 2-bit adder                                           : 4
+ 2-bit subtractor                                      : 4
+# Counters                                             : 2
+ 26-bit up counter                                     : 2
+# Registers                                            : 16
+ 1-bit register                                        : 6
+ 2-bit register                                        : 4
+ 3-bit register                                        : 4
+ 5-bit register                                        : 1
+ 8-bit register                                        : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+INFO:Xst:2261 - The FF/Latch <SEG_SEL_1> in Unit <f2> is equivalent to the following 2 FFs/Latches, which will be removed : <SEG_SEL_2> <SEG_SEL_4> 
+WARNING:Xst:1710 - FF/Latch <SEG_DATA_7> (without init value) has a constant value of 0 in block <f2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <SEG_SEL_1> (without init value) has a constant value of 0 in block <f2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2404 -  FFs/Latches <SEG_DATA<7:7>> (without init value) have a constant value of 0 in block <SevenSeg>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 8
+ 2-bit adder                                           : 4
+ 2-bit subtractor                                      : 4
+# Counters                                             : 2
+ 26-bit up counter                                     : 2
+# Registers                                            : 38
+ Flip-Flops                                            : 38
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <SEG_SEL_1> (without init value) has a constant value of 0 in block <SevenSeg>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <SEG_SEL_2> (without init value) has a constant value of 0 in block <SevenSeg>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <SEG_SEL_4> (without init value) has a constant value of 0 in block <SevenSeg>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <SEG_DATA_0> in Unit <SevenSeg> is equivalent to the following FF/Latch, which will be removed : <SEG_DATA_3> 
+INFO:Xst:2261 - The FF/Latch <control> in Unit <SevenSeg> is equivalent to the following FF/Latch, which will be removed : <SEG_SEL_0> 
+
+Optimizing unit <fightingGameForFPGA> ...
+
+Optimizing unit <SevenSeg> ...
+WARNING:Xst:1710 - FF/Latch <SEG_DATA_1> (without init value) has a constant value of 1 in block <SevenSeg>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <firstPlayer> ...
+WARNING:Xst:1293 - FF/Latch <wait_count_1> has a constant value of 0 in block <firstPlayer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <wait_count_1> has a constant value of 0 in block <firstPlayer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <wait_count_1> has a constant value of 0 in block <firstPlayer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <wait_count_1> has a constant value of 0 in block <firstPlayer>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <secondPlayer> ...
+WARNING:Xst:1293 - FF/Latch <wait_count_1> has a constant value of 0 in block <secondPlayer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <wait_count_1> has a constant value of 0 in block <secondPlayer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <wait_count_1> has a constant value of 0 in block <secondPlayer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <wait_count_1> has a constant value of 0 in block <secondPlayer>. This FF/Latch will be trimmed during the optimization process.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block fightingGameForFPGA, actual ratio is 3.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 82
+ Flip-Flops                                            : 82
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : fightingGameForFPGA.ngr
+Top Level Output File Name         : fightingGameForFPGA
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 30
+
+Cell Usage :
+# BELS                             : 380
+#      GND                         : 1
+#      INV                         : 4
+#      LUT1                        : 50
+#      LUT2                        : 16
+#      LUT2_D                      : 1
+#      LUT2_L                      : 3
+#      LUT3                        : 32
+#      LUT3_D                      : 2
+#      LUT3_L                      : 5
+#      LUT4                        : 106
+#      LUT4_D                      : 13
+#      LUT4_L                      : 13
+#      MUXCY                       : 64
+#      MUXF5                       : 17
+#      VCC                         : 1
+#      XORCY                       : 52
+# FlipFlops/Latches                : 82
+#      FD                          : 6
+#      FDE                         : 2
+#      FDR                         : 53
+#      FDRE                        : 12
+#      FDRSE                       : 1
+#      FDSE                        : 8
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 29
+#      IBUF                        : 8
+#      OBUF                        : 21
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s400pq208-5 
+
+ Number of Slices:                      130  out of   3584     3%  
+ Number of Slice Flip Flops:             82  out of   7168     1%  
+ Number of 4 input LUTs:                245  out of   7168     3%  
+ Number of IOs:                          30
+ Number of bonded IOBs:                  30  out of    141    21%  
+ Number of GCLKs:                         2  out of      8    25%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+g1/clkOut1                         | BUFG                   | 21    |
+clk                                | BUFGP                  | 54    |
+f1/clkOut                          | NONE(f2/SEG_SEL_3)     | 7     |
+-----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 9.898ns (Maximum Frequency: 101.034MHz)
+   Minimum input arrival time before clock: 11.374ns
+   Maximum output required time after clock: 7.076ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'g1/clkOut1'
+  Clock period: 9.898ns (frequency: 101.034MHz)
+  Total number of paths / destination ports: 1179 / 40
+-------------------------------------------------------------------------
+Delay:               9.898ns (Levels of Logic = 8)
+  Source:            currentState2_0 (FF)
+  Destination:       p1/health_1 (FF)
+  Source Clock:      g1/clkOut1 rising
+  Destination Clock: g1/clkOut1 rising
+
+  Data Path: currentState2_0 to p1/health_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDSE:C->Q             6   0.626   1.148  currentState2_0 (currentState2_0)
+     LUT3_D:I0->O          8   0.479   0.944  p1/old_health_2_cmp_eq00011 (p1/old_health_2_cmp_eq0001)
+     LUT4:I3->O            1   0.479   0.740  p1/_old_health_4<0>282_SW0 (N59)
+     LUT4_D:I2->O          3   0.479   0.794  p1/_old_health_4<0>282 (p1/N20)
+     LUT4:I3->O            3   0.479   0.830  p1/_old_health_4<1>1 (p1/_old_health_4<1>)
+     LUT4:I2->O            1   0.479   0.000  p1/health_mux0001<1>_f5_F (N106)
+     MUXF5:I0->O           1   0.314   0.851  p1/health_mux0001<1>_f5 (p1/Madd_health_share0000_lut<1>)
+     LUT3_L:I1->LO         1   0.479   0.123  p1/health_mux0000<1>122_SW0 (N30)
+     LUT4:I3->O            1   0.479   0.000  p1/health_mux0000<1>122 (p1/health_mux0000<1>)
+     FDSE:D                    0.176          p1/health_1
+    ----------------------------------------
+    Total                      9.898ns (4.469ns logic, 5.429ns route)
+                                       (45.2% logic, 54.8% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 5.546ns (frequency: 180.302MHz)
+  Total number of paths / destination ports: 2108 / 108
+-------------------------------------------------------------------------
+Delay:               5.546ns (Levels of Logic = 8)
+  Source:            g1/counter_5 (FF)
+  Destination:       g1/counter_0 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: g1/counter_5 to g1/counter_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.626   1.040  g1/counter_5 (g1/counter_5)
+     LUT2:I0->O            1   0.479   0.000  g1/counter_cmp_eq0000_wg_lut<0> (g1/counter_cmp_eq0000_wg_lut<0>)
+     MUXCY:S->O            1   0.435   0.000  g1/counter_cmp_eq0000_wg_cy<0> (g1/counter_cmp_eq0000_wg_cy<0>)
+     MUXCY:CI->O           1   0.056   0.000  g1/counter_cmp_eq0000_wg_cy<1> (g1/counter_cmp_eq0000_wg_cy<1>)
+     MUXCY:CI->O           1   0.056   0.000  g1/counter_cmp_eq0000_wg_cy<2> (g1/counter_cmp_eq0000_wg_cy<2>)
+     MUXCY:CI->O           1   0.056   0.000  g1/counter_cmp_eq0000_wg_cy<3> (g1/counter_cmp_eq0000_wg_cy<3>)
+     MUXCY:CI->O           1   0.056   0.000  g1/counter_cmp_eq0000_wg_cy<4> (g1/counter_cmp_eq0000_wg_cy<4>)
+     MUXCY:CI->O           1   0.056   0.000  g1/counter_cmp_eq0000_wg_cy<5> (g1/counter_cmp_eq0000_wg_cy<5>)
+     MUXCY:CI->O          27   0.246   1.551  g1/counter_cmp_eq0000_wg_cy<6> (g1/counter_cmp_eq0000)
+     FDR:R                     0.892          g1/counter_0
+    ----------------------------------------
+    Total                      5.546ns (2.955ns logic, 2.591ns route)
+                                       (53.3% logic, 46.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'f1/clkOut'
+  Clock period: 2.854ns (frequency: 350.398MHz)
+  Total number of paths / destination ports: 9 / 7
+-------------------------------------------------------------------------
+Delay:               2.854ns (Levels of Logic = 2)
+  Source:            f2/control (FF)
+  Destination:       f2/SEG_DATA_2 (FF)
+  Source Clock:      f1/clkOut rising
+  Destination Clock: f1/clkOut rising
+
+  Data Path: f2/control to f2/SEG_DATA_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q             10   0.626   1.259  f2/control (f2/control)
+     LUT4:I0->O            1   0.479   0.000  f2/SEG_DATA_mux0000<5>1 (f2/SEG_DATA_mux0000<5>1)
+     MUXF5:I1->O           1   0.314   0.000  f2/SEG_DATA_mux0000<5>_f5 (f2/SEG_DATA_mux0000<5>)
+     FD:D                      0.176          f2/SEG_DATA_2
+    ----------------------------------------
+    Total                      2.854ns (1.595ns logic, 1.259ns route)
+                                       (55.9% logic, 44.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'g1/clkOut1'
+  Total number of paths / destination ports: 1139 / 51
+-------------------------------------------------------------------------
+Offset:              11.374ns (Levels of Logic = 9)
+  Source:            action1<2> (PAD)
+  Destination:       p2/health_1 (FF)
+  Destination Clock: g1/clkOut1 rising
+
+  Data Path: action1<2> to p2/health_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            19   0.715   1.528  action1_2_IBUF (action1_2_IBUF)
+     LUT3:I0->O            1   0.479   0.976  p2/_old_health_6<0>1_SW0 (N24)
+     LUT4_D:I0->O          7   0.479   0.929  p2/_old_health_6<0>1 (p2/N8)
+     LUT4:I3->O            1   0.479   0.740  p2/health_mux0000<0>282 (p2/health_mux0000<0>282)
+     LUT4:I2->O            6   0.479   0.912  p2/health_mux0000<0>286 (p2/N9)
+     LUT3:I2->O            1   0.479   0.704  p2/health_mux0000<1>179 (p2/health_mux0000<1>179)
+     LUT4_L:I3->LO         1   0.479   0.123  p2/health_mux0000<1>188 (p2/health_mux0000<1>188)
+     LUT4:I3->O            1   0.479   0.740  p2/health_mux0000<1>212 (p2/health_mux0000<1>212)
+     LUT4:I2->O            1   0.479   0.000  p2/health_mux0000<1>304 (p2/health_mux0000<1>)
+     FDSE:D                    0.176          p2/health_1
+    ----------------------------------------
+    Total                     11.374ns (4.723ns logic, 6.651ns route)
+                                       (41.5% logic, 58.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'g1/clkOut1'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              7.076ns (Levels of Logic = 1)
+  Source:            p1/state1_0 (FF)
+  Destination:       state1<0> (PAD)
+  Source Clock:      g1/clkOut1 rising
+
+  Data Path: p1/state1_0 to state1<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q            25   0.626   1.541  p1/state1_0 (p1/state1_0)
+     OBUF:I->O                 4.909          state1_0_OBUF (state1<0>)
+    ----------------------------------------
+    Total                      7.076ns (5.535ns logic, 1.541ns route)
+                                       (78.2% logic, 21.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'f1/clkOut'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              6.499ns (Levels of Logic = 1)
+  Source:            f2/control (FF)
+  Destination:       SEG_SEL<0> (PAD)
+  Source Clock:      f1/clkOut rising
+
+  Data Path: f2/control to SEG_SEL<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q             10   0.626   0.964  f2/control (f2/control)
+     OBUF:I->O                 4.909          SEG_SEL_0_OBUF (SEG_SEL<0>)
+    ----------------------------------------
+    Total                      6.499ns (5.535ns logic, 0.964ns route)
+                                       (85.2% logic, 14.8% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 7.88 secs
+ 
+--> 
+
+Total memory usage is 263196 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   15 (   0 filtered)
+Number of infos    :    5 (   0 filtered)
+

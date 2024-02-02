@@ -1,0 +1,6 @@
+verilog work "SevenSeg.v"
+verilog work "secondPlayer.v"
+verilog work "freqDividerForSevenSegment.v"
+verilog work "freqDividerForGame.v"
+verilog work "firstPlayer.v"
+verilog work "fightingGameForFPGA.v"
